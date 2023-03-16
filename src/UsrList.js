@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
      const navigate=useNavigate();
 
     const LoadDetails = (id) => {
-        console.log(id)
-        navigate("/user/details/" + id);
+        //console.log(id)
+        navigate("/user/" + id);
 
     }
 
@@ -15,8 +15,8 @@ import { Link, useNavigate } from "react-router-dom";
 
     }
 
-     useEffect(()=> {
-         fetch("http://localhost:8000/users").then((res)=>{
+     useEffect(() => {
+         fetch("http://localhost:8000/users").then((res) => {
              return res.json();
             }).then((resp)=>{
                 setusrdata(resp);

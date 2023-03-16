@@ -11,7 +11,7 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path='/' element={<UsrList />}> </Route>
-      <Route path='/user/details/:id' element={<User />}></Route>
+      <Route path='/user/:id' element={<User />}></Route>
   
     </Routes> 
   </BrowserRouter>

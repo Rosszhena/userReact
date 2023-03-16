@@ -4,18 +4,19 @@ import { Link, useParams } from "react-router-dom";
 
  const User = () => {
     const { id } = useParams();
-
-    const[ data, setusrdata ]=useState({})
+  
+    const[ usrdata, setusrdata ] = useState({})
+    
 
     useEffect(()=> {
-        fetch("http://localhost:8000/users").then((res)=>{
+        fetch("http://localhost:8000/users/" + id).then((res) => {
             return res.json();
            }).then((resp)=>{
                setusrdata(resp);
         }).catch((err) => {
             console.log(err.message);
            })
-        }, [])
+        }, []);
 
     return (
     <div>
@@ -23,15 +24,15 @@ import { Link, useParams } from "react-router-dom";
                 
         <div className="card row" style={{ "textAlign": "left" }}>
             <div className="card-title">
-                <h2>Employee Create</h2>
+                <h2>Usuarios</h2>
             </div>
             <div className="card-body"></div>
-            {data &&
+            { usrdata &&
                 <div>
-                    <h1>El usuario es : {data.name}({data.id})</h1>
-                    <h3>Contact Details</h3>
-                    <h5>Email is : {data.edad}</h5>
-                    <h5>Phone is : {data.id}</h5>
+                    <h1>{`El usuario es :  ${usrdata.name }`}</h1>
+
+                    <h5>Edad: { usrdata.edad }</h5>
+                    <h5>Id: { usrdata.id }</h5>
                     <Link className="btn btn-danger" to="/">Back to Listing</Link>
                 </div>
             }
